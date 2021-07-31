@@ -265,7 +265,18 @@ export class LPCore extends EventEmitter {
   }
 
   protected findPosition(element) {
-    const rect = element.getBoundingClientRect();
+
+    const elementRect = element.getBoundingClientRect();
+    const rect = {
+      x: elementRect.x,
+      y: elementRect.y,
+      top: elementRect.top,
+      bottom: elementRect.bottom,
+      left: elementRect.left,
+      right: elementRect.right,
+      width: elementRect.width,
+      height: elementRect.height
+    }
     const calRect = this.ui.getBoundingClientRect();
     const orientation = this.options.position.split(' ');
     const scrollX = window.scrollX || window.pageXOffset;
@@ -276,6 +287,8 @@ export class LPCore extends EventEmitter {
 
     if (this.options.parentEl.contains(element)) {
       const parent = this.options.parentEl.getBoundingClientRect();
+      rect.x = rect.x - parent.x;
+      rect.y = rect.y - parent.y;
       rect.top = rect.top - parent.top;
       rect.right = rect.right - parent.right;
       rect.bottom = rect.bottom - parent.bottom;
