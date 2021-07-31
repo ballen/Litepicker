@@ -290,9 +290,9 @@ export class LPCore extends EventEmitter {
       rect.x = rect.x - parent.x;
       rect.y = rect.y - parent.y;
       rect.top = rect.top - parent.top;
-      rect.right = rect.right - parent.right;
-      rect.bottom = rect.bottom - parent.bottom;
       rect.left = rect.left - parent.left;
+      rect.bottom = rect.top + rect.height;
+      rect.right = rect.left + rect.width;
     }
 
     if (orientation[0] === 'auto' || !(/top|bottom/.test(orientation[0]))) {
