@@ -274,6 +274,14 @@ export class LPCore extends EventEmitter {
     let top = 0;
     let left = 0;
 
+    if (this.options.parentEl.contains(element)) {
+      const parent = this.options.parentEl.getBoundingClientRect();
+      rect.top = rect.top - parent.top;
+      rect.right = rect.right - parent.right;
+      rect.bottom = rect.bottom - parent.bottom;
+      rect.left = rect.left - parent.left;
+    }
+
     if (orientation[0] === 'auto' || !(/top|bottom/.test(orientation[0]))) {
       top = rect.bottom + scrollY;
 
