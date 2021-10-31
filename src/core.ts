@@ -298,15 +298,15 @@ export class LPCore extends EventEmitter {
     }
 
     if (orientation[0] === 'auto' || !(/top|bottom/.test(orientation[0]))) {
-      top = rect.bottom + scrollY;
+      top = rect.bottom;
 
       const isOutBounds = rect.bottom + calRect.height > window.innerHeight;
       const hasTopSpace = (rect.top + scrollY) - calRect.height >= calRect.height;
       if (isOutBounds && hasTopSpace) {
-        top = (rect.top + scrollY) - calRect.height;
+        top = (rect.top) - calRect.height;
       }
     } else {
-      top = rect[orientation[0]] + scrollY;
+      top = rect[orientation[0]];
 
       if (orientation[0] === 'top') {
         top -= calRect.height;
