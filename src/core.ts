@@ -279,8 +279,6 @@ export class LPCore extends EventEmitter {
     }
     const calRect = this.ui.getBoundingClientRect();
     const orientation = this.options.position.split(' ');
-    const scrollX = window.scrollX || window.pageXOffset;
-    const scrollY = window.scrollY || window.pageYOffset;
 
     let top = 0;
     let left = 0;
@@ -301,7 +299,7 @@ export class LPCore extends EventEmitter {
       top = rect.bottom;
 
       const isOutBounds = rect.bottom + calRect.height > window.innerHeight;
-      const hasTopSpace = (rect.top + scrollY) - calRect.height >= calRect.height;
+      const hasTopSpace = rect.top - calRect.height >= calRect.height;
       if (isOutBounds && hasTopSpace) {
         top = (rect.top) - calRect.height;
       }
@@ -314,18 +312,18 @@ export class LPCore extends EventEmitter {
     }
 
     if (!(/left|right/.test(orientation[0])) && (!orientation[1] || orientation[1] === 'auto' || !(/left|right/.test(orientation[1])))) {
-      left = rect.left + scrollX;
+      left = rect.left;
 
       const isOutBounds = rect.left + calRect.width > window.innerWidth;
-      const hasLeftSpace = (rect.right + scrollX) - calRect.width >= 0;
+      const hasLeftSpace = rect.right - calRect.width >= 0;
       if (isOutBounds && hasLeftSpace) {
-        left = (rect.right + scrollX) - calRect.width;
+        left = rect.right - calRect.width;
       }
     } else {
       if (/left|right/.test(orientation[0])) {
-        left = rect[orientation[0]] + scrollX;
+        left = rect[orientation[0]];
       } else {
-        left = rect[orientation[1]] + scrollX;
+        left = rect[orientation[1]];
       }
 
       if (orientation[0] === 'right' || orientation[1] === 'right') {
