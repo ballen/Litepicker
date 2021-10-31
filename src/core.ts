@@ -285,19 +285,16 @@ export class LPCore extends EventEmitter {
     let top = 0;
     let left = 0;
 
-
-    if (this.options.parentEl !== null){
-      var parentOffset = this.options.parentEl.offsetParent;
-      if (parentOffset !== null && parentOffset.tagName !== 'html' && parentOffset.tagName !== 'body')
-      {
-        const parent = parentOffset.getBoundingClientRect();
-        rect.x = rect.x - parent.x;
-        rect.y = rect.y - parent.y;
-        rect.top = rect.top - parent.top;
-        rect.left = rect.left - parent.left;
-        rect.bottom = rect.top + rect.height;
-        rect.right = rect.left + rect.width;
-      }
+    var parentOffset = this.ui.offsetParent;
+    if (parentOffset !== null && parentOffset.tagName !== 'html' && parentOffset.tagName !== 'body')
+    {
+      const parent = parentOffset.getBoundingClientRect();
+      rect.x = rect.x - parent.x;
+      rect.y = rect.y - parent.y;
+      rect.top = rect.top - parent.top;
+      rect.left = rect.left - parent.left;
+      rect.bottom = rect.top + rect.height;
+      rect.right = rect.left + rect.width;
     }
 
     if (orientation[0] === 'auto' || !(/top|bottom/.test(orientation[0]))) {
