@@ -5,11 +5,11 @@
   "main": "./dist/litepicker.umd.js",
   "types": "./dist/types/index.d.ts",
   "scripts": {
-    "prod": "export SET NODE_OPTIONS=--openssl-legacy-provider && webpack --config config/webpack.prod.js",
-    "dev": "export SET NODE_OPTIONS=--openssl-legacy-provider && webpack --config config/webpack.dev.js",
-    "nocss": "export SET NODE_OPTIONS=--openssl-legacy-provider && webpack --config config/webpack.nocss.js",
-    "plugins": "export SET NODE_OPTIONS=--openssl-legacy-provider && webpack --config config/webpack.plugins.js && webpack --config config/webpack.plugins.nocss.js",
-    "watch": "export SET NODE_OPTIONS=--openssl-legacy-provider && webpack -w --config config/webpack.dev.js",
+    "prod": "webpack --config config/webpack.prod.js",
+    "dev": "webpack --config config/webpack.dev.js",
+    "nocss": "webpack --config config/webpack.nocss.js",
+    "plugins": "webpack --config config/webpack.plugins.js && webpack --config config/webpack.plugins.nocss.js",
+    "watch": "webpack -w --config config/webpack.dev.js",
     "test": "jest",
     "prepare": "npm run prod && npm run plugins"
   },
@@ -62,9 +62,9 @@
     "tslint": "^5.20.1",
     "tslint-config-airbnb": "^5.11.2",
     "typescript": "^3.7.2",
-    "webpack": "^4.41.2",
-    "webpack-cli": "^3.3.10",
-    "webpack-merge": "^4.2.2"
+    "webpack": "5.x",
+    "webpack-cli": "4.x",
+    "webpack-merge": "5.x"
   },
   "browserslist": [
     "defaults",
