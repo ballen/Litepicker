@@ -5,11 +5,11 @@
   "main": "./dist/litepicker.umd.js",
   "types": "./dist/types/index.d.ts",
   "scripts": {
-    "prod": "webpack --config config/webpack.prod.js",
-    "dev": "webpack --config config/webpack.dev.js",
-    "nocss": "webpack --config config/webpack.nocss.js",
-    "plugins": "webpack --config config/webpack.plugins.js && webpack --config config/webpack.plugins.nocss.js",
-    "watch": "webpack -w --config config/webpack.dev.js",
+    "prod": "export SET NODE_OPTIONS=--openssl-legacy-provider && webpack --config config/webpack.prod.js",
+    "dev": "export SET NODE_OPTIONS=--openssl-legacy-provider && webpack --config config/webpack.dev.js",
+    "nocss": "export SET NODE_OPTIONS=--openssl-legacy-provider && webpack --config config/webpack.nocss.js",
+    "plugins": "export SET NODE_OPTIONS=--openssl-legacy-provider && webpack --config config/webpack.plugins.js && webpack --config config/webpack.plugins.nocss.js",
+    "watch": "export SET NODE_OPTIONS=--openssl-legacy-provider && webpack -w --config config/webpack.dev.js",
     "test": "jest",
     "prepare": "npm run prod && npm run plugins"
   },
