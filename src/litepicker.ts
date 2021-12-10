@@ -209,6 +209,11 @@ export class Litepicker extends Calendar {
         this.datePicked[0] = tempDate.clone();
       }
 
+      if (this.datePicked[1] && this.datePicked[0] === this.datePicked[1])
+      {
+        this.datePicked.splice(1, this.datePicked.length - 1)
+      }
+
       if (this.shouldCheckLockDays()) {
         const locked = rangeIsLocked(this.datePicked, this.options);
 
