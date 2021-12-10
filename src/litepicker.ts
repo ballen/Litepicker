@@ -227,9 +227,13 @@ export class Litepicker extends Calendar {
         if (this.options.singleMode && this.datePicked.length) {
           this.setDate(this.datePicked[0]);
           this.hide();
-        } else if (!this.options.singleMode && this.datePicked.length === 2) {
-          this.setDateRange(this.datePicked[0], this.datePicked[1]);
-          this.hide();
+        } else if (!this.options.singleMode) {
+          if (this.datePicked.length === 2) {
+            this.setDateRange(this.datePicked[0], this.datePicked[1]);
+            this.hide();
+          } else {
+            this.setDate(this.datePicked[0]);
+          }
         }
       }
       return;
