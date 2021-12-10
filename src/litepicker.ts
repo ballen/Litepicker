@@ -104,15 +104,20 @@ export class Litepicker extends Calendar {
 
     if (this.options.singleMode && startDate) {
       this.options.element.value = startDate.format(this.options.format, this.options.lang);
-    } else if (!this.options.singleMode && startDate && endDate) {
+    } else if (!this.options.singleMode && startDate) {
       const startValue = startDate.format(this.options.format, this.options.lang);
-      const endValue = endDate.format(this.options.format, this.options.lang);
+      
+      if (endDate)
+      {
+        const endValue = endDate.format(this.options.format, this.options.lang);
 
-      if (this.options.elementEnd instanceof HTMLInputElement) {
-        this.options.element.value = startValue;
-        this.options.elementEnd.value = endValue;
+        if (this.options.elementEnd instanceof HTMLInputElement) {
+          this.options.elementEnd.value = endValue;
+        } else {
+          this.options.element.value = `${startValue}${this.options.delimiter}${endValue}`;
+        }
       } else {
-        this.options.element.value = `${startValue}${this.options.delimiter}${endValue}`;
+        this.options.element.value = startValue;
       }
     }
 
