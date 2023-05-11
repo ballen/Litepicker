@@ -45,6 +45,7 @@ multiconfig.forEach(config => {
           {
             loader: 'style-loader',
             options: {
+              esModule: false,
               insert: function insertAtTop(element) {
                 var parent = document.querySelector('head');
                 // eslint-disable-next-line no-underscore-dangle
@@ -75,17 +76,17 @@ multiconfig.forEach(config => {
             loader: 'css-loader',
             options: {
               modules: {
-                localIdentName: '[local]',
-              },
-              localsConvention: 'camelCaseOnly'
+                exportLocalsConvention: 'camelCaseOnly',
+                localIdentName: '[local]'
+              }
             }
           },
           {
             loader: 'postcss-loader',
             options: {
               sourceMap: true,
-              config: {
-                path: 'postcss.config.js'
+              postcssOptions: {
+                config: 'postcss.config.js'
               }
             }
           },

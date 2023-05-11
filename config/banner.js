@@ -13,7 +13,7 @@ Package: ${name} (https://www.npmjs.com/package/litepicker)
 License: ${license} (https://github.com/wakirin/Litepicker/blob/master/LICENCE.md)
 Copyright 2019-${new Date().getFullYear()} Rinat G.
     
-Hash: [hash]
+Hash: [fullhash]
 `;
 
 module.exports = banner;
