@@ -26,17 +26,17 @@ module.exports = {
             loader: 'css-loader',
             options: {
               modules: {
-                localIdentName: '[local]',
-              },
-              localsConvention: 'camelCaseOnly'
+                exportLocalsConvention: 'camelCaseOnly',
+                localIdentName: '[local]'
+              }
             }
           },
           {
             loader: 'postcss-loader',
             options: {
               sourceMap: true,
-              config: {
-                path: 'postcss.config.js'
+              postcssOptions: {
+                config: 'postcss.config.js'
               }
             }
           },
